@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<div class="background-sm background">
+<div class="container mt-5">
+    <div class="row pt-5">
+        <div class="col-md-6 pl-md-5 pr-md-5 pb-md-4 pt-md-4 p-sm-2 bg-light m-auto rounded">
+            <h2 class="mb-3 text-center">Order Now</h2>
+
+            <form action="/food/<%= food._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="name">Name of food</label>
+                    <input name="food[name]" value="<%= food.name %>" type="text" class="form-control" id="name" placeholder="Name of food" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">description</label>
+                    <input name="food[description]" value="<%= food.description %>" type="text" class="form-control" id="description" placeholder="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input name="food[image]" value="<%= food.image %>" type="text" class="form-control" id="image" placeholder="https://www.image.com/img.jpg" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Qantity</label>
+                    <input name="food[cost]" value="<%= food.cost %>" type="number" class="form-control" id="quantity" placeholder="Quantity" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>

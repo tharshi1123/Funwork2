@@ -1,0 +1,57 @@
+<% include partials/header %>
+
+<div class="background mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="background-text">
+                <h1 class="display-3 font-weight-bold">FOOD ORDERING</h1>
+                <h4 class="pb-4">Order your favourites foods here...</h4> <br>
+                <a id="to-daftar-menu" href="#daftar-menu" class="btn btn-primary p-3 font-weight-bold">EDIT YOUR MENU</a>
+                <a href="/food/new" class="btn btn-success p-3 font-weight-bold">ORDER YOUR FOODS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="daftar-menu">
+    <div class="row mb-5">
+        <h2 class="font-weight-bold section-title m-auto">Your orders</h2>
+    </div>
+    <div class="row">
+        <% food.forEach(function(data){ %>
+            <div class="col-lg-3 col-md-6 mb-4 food">
+                <div class="img-thumbnail p-0 food-img">
+                    <img class="mb-3" src="<%= data.image %>">
+                    <div class="mx-3">
+                        <h4 class="resto-name "><%= data.name %></h4>
+                        <p class="text-success font-weight-bold"><%= data.cost %></p>
+                        <p><%= data.description %></p>
+                    </div>
+                    <div class="mx-3 pb-3">
+                        <form action="/food/<%= data._id %>?_method=DELETE" method="POST">
+                            <a href="/food/<%= data._id %>/update" class="btn btn-primary mr-1">Edit</a>
+                            <button class="btn btn-outline-danger">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<script>
+    $("#to-daftar-menu").click(function() {
+        if(this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+
+            $("html, body").animate({
+            scrollTop: $(hash).offset().top
+            }, 500, function(){
+                window.location.hash = hash;
+            });
+        }
+    });
+</script>
+
+<% include partials/footer %>
